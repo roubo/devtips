@@ -17,4 +17,11 @@
     And it is hard to catch the events by realtime in user space, so I processes the events in kernel space.
     Some ioctl are usefull.
 
-## How to make code easy
+## How to make code simple
+
+    When I feel that it is hard to manage a project, and the project may be not good in the beginning.
+    Simple things are not necessarily the best, but the best one must be simple.
+    Every function must be used by many others.
+    Every file must be used by many others.
+    If not, it is failure.
+

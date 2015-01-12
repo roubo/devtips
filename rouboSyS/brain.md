@@ -4,6 +4,11 @@
 
 ### Linux Scheduler
 
+    * O(n)
+    * O(1)
+    * CFS
+
 ### Python Scheduler
 
-### Golang Scheduler
+    * greenlet
+    * Gevent

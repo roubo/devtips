@@ -25,12 +25,12 @@
     Every function must be used by many others.
     Every file must be used by many others.
     If not, it is failure.
-    See -> [app-ss-vpn ss.sh](https://gitcafe.com/Modou/app-ss-vpn/blob/master/sbin/ss.sh)
+    See -> [app-ss-vpn](https://gitcafe.com/Modou/app-ss-vpn/blob/master/sbin/ss.sh)
 
 ## About Lua coroutine
 
     luci cgi run function:
-    ```lua
+``````````````````````````````lua
     function run()
       local r = luci.http.Request(
         luci.sys.getenv(),
@@ -38,35 +38,27 @@
         ltn12.sink.file(io.stderr)
       )
       local x = coroutine.create(luci.dispatcher.httpdispatch)
-      local hcache = ""
       local active = true
+      -- as a sheduler
       while coroutine.status(x) ~= "dead" do
         local res, id, data1, data2 = coroutine.resume(x, r)
         if not res then
-          print("Status: 500 Internal Server Error")
-          print("Content-Type: text/plain\n")
-          print(id)
+          -- return error
           break;
         end
         if active then
           if id == 1 then
-            io.write("Status: " .. tostring(data1) .. " " .. data2 .. "\r\n")
+            ...
           elseif id == 2 then
-            hcache = hcache .. data1 .. ": " .. data2 .. "\r\n"
-          elseif id == 3 then
-            io.write(hcache)
-            io.write("\r\n")
-          elseif id == 4 then
-            io.write(tostring(data1 or ""))
-          elseif id == 5 then
-            io.flush()
-            io.close()
             active = false
-          elseif id == 6 then
-            data1:copyz(nixio.stdout, data2)
+          elseif id == 3 then
             data1:close()
           end
         end
       end
     end
-    ```
+``````````````````````````````
+
+      See -> [Lua corotine demo] (http://blog.csdn.net/wzzfeitian/article/details/8832017)
+
+## iptables modes

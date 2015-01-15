@@ -65,13 +65,13 @@
 
     If want to support some match/TARGET,  it must to install a user space module and its kernel module.
     user space:
-    | module name | module describe |
-    | ----------- | --------------- |
-    | iptables-mod-hashlimit | iptables extensions for hashlimit matching Includes: - libipt_hashlimit |
+  | module name | module describe |
+  | ----------- | --------------- |
+  | iptables-mod-hashlimit | iptables extensions for hashlimit matching Includes: - libipt_hashlimit |
 
-    kernel space:
-    | module name | module describe |
-    | ----------- | --------------- |
-    | kmod-ipt-hashlimit | Kernel modules support for the hashlimit bucket match module |
+  kernel space:
+  | module name | module describe |
+  | ----------- | --------------- |
+  | kmod-ipt-hashlimit | Kernel modules support for the hashlimit bucket match module |
 
     see -> [netfilter modules](http://wiki.openwrt.org/doc/howto/netfilter)

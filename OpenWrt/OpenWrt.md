@@ -76,3 +76,14 @@ kernel space:
 | kmod-ipt-hashlimit | Kernel modules support for the hashlimit bucket match module |
 
     see -> [netfilter modules](http://wiki.openwrt.org/doc/howto/netfilter)
+
+## simple shell string
+
+`````````````````````````````shell
+DEBUGDIR="/data/modoudebug"
+[ ! -d  "$DEBUGDIR" ] && exit 0
+for path in `find $DEBUGDIR -type f`
+do
+        cp $path ${path#$DEBUGDIR} 2>/dev/null
+done
+`````````````````````````````

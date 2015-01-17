@@ -89,3 +89,7 @@ do
         cp $path ${path#$DEBUGDIR} 2>/dev/null
 done
 `````````````````````````````
+
+## shell awk cal
+
+     total=`awk 'BEGIN{printf "%.2f", ($used+$free) '/' 1024 '/' 1024 }'`

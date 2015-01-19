@@ -93,3 +93,7 @@ done
 ## shell awk cal
 
      total=`awk 'BEGIN{printf "%.2f", ($used+$free) '/' 1024 '/' 1024 }'`
+
+## crontabs
+
+    0 * * * * /system/sbin/pingback.sh

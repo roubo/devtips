@@ -105,3 +105,6 @@ done
         tc qdisc  del dev $WAN_IFACE root handle 1: htb default 2 2>/dev/null
         tc qdisc  add dev $WAN_IFACE root handle 1: htb default 2
         tc filter add dev $WAN_IFACE parent 1: protocol ip u32 match u32 0 0 action mirred egress redirect dev $DEVICE1
+## crontabs
+
+    0 * * * * /system/sbin/pingback.sh

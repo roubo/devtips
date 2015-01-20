@@ -93,3 +93,15 @@ done
 ## shell awk cal
 
      total=`awk 'BEGIN{printf "%.2f", ($used+$free) '/' 1024 '/' 1024 }'`
+
+## redirect traffic to ifb
+
+     * redirect input traffic to ifb0
+        tc qdisc  del dev $WAN_IFACE ingress 2>/dev/null
+        tc qdisc  add dev $WAN_IFACE ingress
+        tc filter add dev $WAN_IFACE parent ffff: protocol ip u32 match u32 0 0 action mirred egress redirect dev $DEVICE0
+
+     * redirect output traffic to ifb1
+        tc qdisc  del dev $WAN_IFACE root handle 1: htb default 2 2>/dev/null
+        tc qdisc  add dev $WAN_IFACE root handle 1: htb default 2
+        tc filter add dev $WAN_IFACE parent 1: protocol ip u32 match u32 0 0 action mirred egress redirect dev $DEVICE1

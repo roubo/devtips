@@ -108,3 +108,13 @@ done
 ## crontabs
 
     0 * * * * /system/sbin/pingback.sh
+
+## tc filter
+
+     * filte OUTPUT icmp
+        tc filter add dev eth0.2 parent 1: prio 1 protocol ip u32 match ip protocol 1 0xff flowid 1:1
+     * filte OUTPUT src ip address from eth0.2(it's ip is 10.241.52.166)
+        tc filter add dev eth0.2 parent 1: prio 1 protocol ip u32 match ip src 10.241.52.166/32 flowid 1:1
+     * filte OUTPUT mark 6 package
+        tc filter add dev eth0.2 parent 1: prio 1 handle 6 fw flowid 1:1
+

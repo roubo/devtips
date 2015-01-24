@@ -118,3 +118,9 @@ done
      * filte OUTPUT mark 6 package
         tc filter add dev eth0.2 parent 1: prio 1 handle 6 fw flowid 1:1
 
+## iptables insert
+
+     * head add
+        iptables -I
+     * tail add
+     *  iptables -A

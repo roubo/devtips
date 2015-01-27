@@ -124,3 +124,8 @@ done
         iptables -I
      * tail add
      *  iptables -A
+
+## ifb and iptables
+
+     You'll need to filter aswell - on egress you can use iptables + marks (I don't think classify will work).
+     But on ingress you can't use iptables because ifb is before netfilter.

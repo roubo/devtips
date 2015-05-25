@@ -181,5 +181,32 @@ done
     ip_3=${ip_tmp%%.*}
     ip_4=${master_ipaddr##*.}
 
+## 代码管理必备
 
+  * 从别的upstream上merge代码
+
+    git remote add upstream https://github.com/XXX/YYY.git
+    git remote -v
+    git fetch upstream
+    git merge upstream/master
+
+## mac地址计算
+
+    sn=${onedevice:0:12}
+    mac_wan=${onedevice:12}
+    mac_5g=`echo "obase=16; $((16#$mac_wan - 1))" | bc`
+    mac_2g=`echo "obase=16; $((16#$mac_wan - 2))" | bc`
+    mac_lan=`echo "obase=16; $((16#$mac_wan - 3))" | bc`
+    echo "$sn, $mac_lan, $mac_2g. $mac_5g, $mac_wan" >> $devicefile
+
+## diff补丁
+
+    diff -uN from-file to-file >to-file.patch
+    patch -p0 < to-file.patch
+    patch -RE -p0 < to-file.patch
+
+    diff -uNr  from-docu  to-docu  >to-docu.patch
+    cd to-docu
+    patch -p1 < to-docu.patch
+    patch -R -p1 <to-docu.patch
 
